@@ -18,39 +18,25 @@ class _UserDetailState extends State<UserDetail> {
     return ChangeNotifierProvider(builder: (_) => UserBloc(), child:
     Scaffold(
         appBar: buildAppBar(context, 'User Detail >>${_userBloc.isItemEmpty}'),//${_userBloc.itemDetail.firstName}'),
-        body:  /* Observer(
-          name: 'userdetail',
-          builder: (context) {
-            return  */_userBloc.isItemEmpty?
+        body: _userBloc.isItemEmpty?
             Center(child: Text('User data are empty >> ${_userBloc.position}')):
-             userDetail( _userBloc,context)/* ;
-            }
-        ) */,
+             userDetail( _userBloc,context),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            /* Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => UserForm(data: data))); */
-          },
+          onPressed: () => _userBloc.viewDetail(),
           tooltip: 'Add',
           child: Icon(Icons.edit),
         )));
   }
 
   userDetail(UserBloc _userBloc,BuildContext context) {
-
-    //print(_userBloc.itemDetail.email);
-    return 
-    ListView(
+    return ListView(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         children: <Widget>[
           SizedBox(height: 100.0),
           Icon(Icons.person, size: 100, color: Colors.blue[500]),
          Column(
               children: <Widget>[
-                Text('${_userBloc.itemDetail }'),
-                Text('${_userBloc.itemDetail.firstName}'),
+                Text(_userBloc.itemDetail.firstName),
                 Text(_userBloc.itemDetail.lastName),
                 Text(_userBloc.itemDetail.email),
                 Text(_userBloc.itemDetail.authorities.toString()),

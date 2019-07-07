@@ -51,10 +51,10 @@ class _UserListState extends State<UserList> {
         _userBloc.loading
                 ? CustomProgressIndicatorWidget()
                 : Material(child: _buildSlidelist(_userBloc,context)),
-       _userBloc.success
+       /* _userBloc.success
                 ? showInformation(context, 'info', 'bismillah')
-                : showErrorMessage(context, '')//_errorBloc.errorMessage)
-        ,_userBloc.isModified ? KutAlert():Container(),
+                : showErrorMessage(context, ''), *///_errorBloc.errorMessage)
+        _userBloc.isModified ? KutAlert():Container(),
       ],
     );
   }
@@ -113,11 +113,18 @@ class _UserListState extends State<UserList> {
                   overflow: TextOverflow.ellipsis,
                   softWrap: false,
                 ),
-                 onTap: ()=>_userBloc.itemTapU(index)
+                 onTap: (){_userBloc.itemTapU(index);
+                 _showDialog(context);
+                 }
               ),
                 );
             }
           )
           : Center(child: Text('Data empty'));
+  }
+
+  _showDialog(BuildContext context) {
+    Scaffold.of(context)
+        .showSnackBar(SnackBar(content: Text('Submitting form')));
   }
 }

@@ -33,8 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _userBloc.getProfile();
 
-    print('>>>>>>>>> ${_authBloc.loggedIn} ');
-
     return Scaffold(
       key: _homeKey,
       appBar: buildAppBar(context,'Home'),

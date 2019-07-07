@@ -43,7 +43,7 @@ class _UserFormState extends State<UserForm> {
   Widget build(BuildContext context) {
     final UserBloc _userBloc = Provider.of<UserBloc>(context);
 
-_username.addListener(() {
+    _username.addListener(() {
       _userBloc.setUsername(_username.text);
     });
 
@@ -60,9 +60,8 @@ _username.addListener(() {
     });
 
 
-     if (widget.data != null) {
-     // widget.isEdit = true;
-      User user = widget.data;
+     if (_userBloc.itemDetail != null) {
+      User user = _userBloc.itemDetail;
 
       _username.text = user.login;
       _firstname.text = user.firstName;
@@ -145,6 +144,13 @@ _username.addListener(() {
           value: _activated,
           onChanged: (bool newValue) =>_userBloc.setActivated(_email.text)
       ),
+      CheckboxListTile(
+                              title: const Text('Cooking'),
+                              value: true,
+                              onChanged: (val){
+                                setState(() =>
+                                    val=false);
+                              }),
       FlatButton(
           child: Text('Profile'),
 

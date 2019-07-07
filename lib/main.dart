@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'bloc/error/index.dart';
@@ -21,6 +22,7 @@ import 'constants/strings.dart';
 import 'bloc/app/index.dart';
 import 'modules/account/bloc/authentication/index.dart';
 import 'modules/account/bloc/user/index.dart';
+import 'utils/app_localization.dart';
 import 'views/splash.dart';
 import 'services/locator.dart';
 import 'services/routes.dart';
@@ -54,6 +56,19 @@ class KutilangApp extends StatelessWidget {
     final AppBloc _appBloc = Provider.of<AppBloc>(context);
 
     return  MaterialApp(
+                localeResolutionCallback: (deviceLocale, supportedLocales) {
+                    return _appBloc.isLocale ? _appBloc.locale:deviceLocale;
+                },
+                localizationsDelegates: [
+                  AppLocalizationsDelegate(),
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: [
+                    const Locale('en', 'US'), // English
+                    const Locale('id', 'ID'), // Bahasa
+                    const Locale('ar', ''), // Arabic
+                ],
                 key: _appKey,
                 debugShowCheckedModeBanner: false,
                 title: Strings.appName,

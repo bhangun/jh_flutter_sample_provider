@@ -188,4 +188,8 @@ class UserBloc extends ChangeNotifier {
               lastModifiedDate: instantToDate(DateTime.now())
               );
   }
+
+  viewDetail() {
+    locator<NavigationService>().navigateTo(Routes.userForm);
+  }
 }

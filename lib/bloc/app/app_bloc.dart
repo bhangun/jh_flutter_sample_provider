@@ -4,31 +4,20 @@ import 'package:jh_flutter_provider/themes/index.dart';
 
 
 class AppBloc extends ChangeNotifier {
+  bool isLocale = false;
 
-/* set app() {
-    //_counter = val;//
-    notifyListeners();
-  }
- */
   ThemeData get theme => isLightTheme? LightTheme.buildTheme():DarkTheme.buildTheme() ;
 
-   
   bool get wtheme => isLightTheme? true:false ;
-
  
   bool isLightTheme = true;
 
-
-  void count(bool b){
-    // print('>>>>>>>>>>>>>>>>$b');
-  }
-
+  Locale get locale => null;
  
   switchToDark(){
     isLightTheme = true;
     // print('$theme Light $isLightTheme');
   }
-
  
   switchToLight(){
     isLightTheme = true;

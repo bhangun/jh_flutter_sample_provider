@@ -6,5 +6,5 @@ GetIt locator = GetIt();
 
 void setupLocator() {
   locator.registerLazySingleton(() => NavigationService());
-  locator.registerLazySingleton(() => ThemeService());
+  //locator.registerLazySingleton(() => ThemeService());
 }

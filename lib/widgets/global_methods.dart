@@ -61,11 +61,11 @@ Widget header(String accountName,String accountEmail,String imgPath) =>
   }
 
 
-  showMe(){
-    Flushbar(
+  showMe(BuildContext context){
+     Flushbar(
       title: "Hey Ninja",
       message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-      flushbarPosition: FlushbarPosition.TOP,
+      flushbarPosition: FlushbarPosition.BOTTOM,
       flushbarStyle: FlushbarStyle.FLOATING,
       reverseAnimationCurve: Curves.decelerate,
       forwardAnimationCurve: Curves.elasticOut,
@@ -96,5 +96,5 @@ Widget header(String accountName,String accountEmail,String imgPath) =>
         "You killed that giant monster in the city. Congratulations!",
         style: TextStyle(fontSize: 18.0, color: Colors.green, fontFamily: "ShadowsIntoLightTwo"),
       ),
-    );
+    ).show(context);
   }
