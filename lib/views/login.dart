@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jh_flutter_provider/utils/app_localization.dart';
 import 'package:provider/provider.dart';
 
 import '../modules/account/bloc/authentication/index.dart';
@@ -58,11 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return  Scaffold(
       primary: true,
-      body: _buildBody(_authBloc),
+      body: _buildBody(context,_authBloc),
     );
   }
 
-  Material _buildBody(AuthenticationBloc _authBloc) {
+  Material _buildBody(BuildContext context,AuthenticationBloc _authBloc) {
     return Material(
       child: Stack(
         children: <Widget>[
@@ -82,11 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         Expanded(
                           flex: 1,
-                          child: _buildRightSide(_authBloc),
+                          child: _buildRightSide(context,_authBloc),
                         ),
                       ],
                     )
-                  : child = Center(child: _buildRightSide(_authBloc));
+                  : child = Center(child: _buildRightSide( context,_authBloc));
               return child;
             },
           ),
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildRightSide(AuthenticationBloc _authBloc) {
+  Widget _buildRightSide(BuildContext context,AuthenticationBloc _authBloc) {
     return Form(
      key: _formKey,
       child: SingleChildScrollView(
@@ -123,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
               _buildUserIdField(_authBloc),
               _buildPasswordField(_authBloc),
               _buildForgotPasswordButton(),
-              _buildSignInButton(_authBloc),
+              _buildSignInButton(context,_authBloc),
             ],
           ),
         ),
@@ -179,10 +180,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSignInButton(AuthenticationBloc _authBloc) {
+  Widget _buildSignInButton(BuildContext context,AuthenticationBloc _authBloc) {
     return RoundedButtonWidget(
       key: Key('user_sign_button'),
-      buttonText: Strings.login_btn_sign_in,
+      buttonText: AppLocalizations.of(context, 'signin'),//Strings.login_btn_sign_in,
       buttonColor:  Theme.of(context).buttonColor,
       textColor: Theme.of(context).textTheme.button.color,
       onPressed: ()=> _authBloc.canLogin?

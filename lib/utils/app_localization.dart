@@ -8,10 +8,12 @@ class AppLocalizations {
 
   static Map<String, Map<String, String>> _localizedValues = {
     'en': {
+      'signin': 'Sign In',
       'foo': 'Foo',
       'bar': 'Bar'
     },
     'ar': {
+      'signin': 'فو',
       'foo': 'فو',
       'bar': 'بار'
     }
